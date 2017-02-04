@@ -12,7 +12,6 @@ use yii\widgets\Pjax;
 
 AppAsset::register($this);
 
-$this->registerJs('jQuery(document).pjax(".navbar-nav a", {"push":true,"replace":false,"timeout":5500,"scrollTo":false,"container":"#pjax-page-container"}); ');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -68,7 +67,9 @@ $this->registerJs('jQuery(document).pjax(".navbar-nav a", {"push":true,"replace"
 
         <?php Pjax::begin([
           'id'=>'pjax-page-container',
-          'timeout'=>5500,      
+          'timeout'=>5500,
+            
+            'clientOptions' => ["push" => true,"replace" => false,"timeout" => 5500,"scrollTo" => false,"container" => "#pjax-page-container"]
         ]); ?>
 
         <?= $content ?>
